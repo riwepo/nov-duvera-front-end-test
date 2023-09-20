@@ -1,0 +1,29 @@
+/***************************/
+/* places a colored border */
+/* solely for debugging    */
+/***************************/
+
+div,
+header,
+nav,
+img {
+  border: solid 1px red;
+}
+
+@media (min-width: 640px) {
+  div,
+  header,
+  nav,
+  img {
+    border: solid 1px green;
+  }
+}
+
+@media (min-width: 1280px) {
+  div,
+  header,
+  nav,
+  img {
+    border: solid 1px blue;
+  }
+}
