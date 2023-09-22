@@ -15,6 +15,7 @@ const TrendingNumber: React.FC<TrendingNumberProps> = function (props) {
   const colorClass = getTailwindColorClass(props.older, props.newer);
   return (
     <p className={`text-${colorClass} ${props.className}`}>{props.newer}</p>
-}
+  );
+};
 
 export default TrendingNumber;
