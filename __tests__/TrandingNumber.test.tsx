@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import DynamicNumber from "../app/components/DynamicNumber";
+import DynamicNumber from "../app/components/TrendingNumber";
 import "@testing-library/jest-dom";
 
 describe("DynamicNumber component test suite", () => {
