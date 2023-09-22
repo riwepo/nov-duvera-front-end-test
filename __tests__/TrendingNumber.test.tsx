@@ -38,14 +38,47 @@ describe("TrendingNumber component test suite", () => {
     const newerNumberElement = screen.getByText(newer);
     expect(newerNumberElement).toHaveClass("text-red-600");
   });
-  it("adds any classNames passed in", () => {
+  it("appends any classNames passed in", () => {
     const older = 1;
     const newer = 2;
-    const className = "some-class-name";
+    const passedInClassName = "passed-in-class-name";
     render(
-      <TrendingNumber older={older} newer={newer} className={className} />
+      <TrendingNumber
+        older={older}
+        newer={newer}
+        className={passedInClassName}
+      />
     );
     const newerNumberElement = screen.getByText(newer);
-    expect(newerNumberElement).toHaveClass(className);
+    expect(newerNumberElement).toHaveClass("text-green-600");
+    expect(newerNumberElement).toHaveClass(passedInClassName);
+  });
+  it("displays dashes if newer is null", () => {
+    const older = 1;
+    const newer = null;
+    render(<TrendingNumber older={older} newer={newer} />);
+    const newerNumberElement = screen.getByText("-------");
+    expect(newerNumberElement).toBeInTheDocument();
+  });
+  it("displays newer even if older is null", () => {
+    const older = null;
+    const newer = 1234;
+    render(<TrendingNumber older={older} newer={newer} />);
+    const newerNumberElement = screen.getByText(newer);
+    expect(newerNumberElement).toBeInTheDocument();
+  });
+  it("displays in white if older is null", () => {
+    const older = null;
+    const newer = 1234;
+    render(<TrendingNumber older={older} newer={newer} />);
+    const newerNumberElement = screen.getByText(newer);
+    expect(newerNumberElement).toHaveClass("text-white");
+  });
+  it("displays in white if newer is null", () => {
+    const older = 1234;
+    const newer = null;
+    render(<TrendingNumber older={older} newer={newer} />);
+    const newerNumberElement = screen.getByText("-------");
+    expect(newerNumberElement).toHaveClass("text-white");
   });
 });
