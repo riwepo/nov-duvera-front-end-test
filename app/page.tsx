@@ -6,6 +6,10 @@ import TrendingNumber from "./components/TrendingNumber";
 
 import useWebSocketNumberListener from "./hooks/useWebSocketNumberListener";
 
+import config from "../config.json";
+
+const webSocketUrl = config.SERVER_URL;
+
 export default function Home() {
   // store the older number at index 1
   // store the newer number at index 0
@@ -22,7 +26,7 @@ export default function Home() {
   };
 
   // list for a new random number on a web socket
-  useWebSocketNumberListener("ws://localhost:8080", newNumberHandler);
+  useWebSocketNumberListener(webSocketUrl, newNumberHandler);
 
   return (
     <div className="bg-black h-screen grid grid-rows-[1fr_auto_1fr] grid-cols-[1fr_auto_1fr]">
