@@ -1,0 +1,2 @@
+export const NUMBER_SERVER_DIGITS = 7;
+export const NUMBER_SERVER_PERIOD_MS = 100;
