@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import TrendingNumber from "../app/components/TrendingNumber";
 import "@testing-library/jest-dom";
+import { NUMBER_SERVER_DIGITS } from "@/app/lib/constants";
 
 describe("TrendingNumber component test suite", () => {
   it("displays the newer number", () => {
@@ -57,7 +58,9 @@ describe("TrendingNumber component test suite", () => {
     const older = 1;
     const newer = null;
     render(<TrendingNumber older={older} newer={newer} />);
-    const newerNumberElement = screen.getByText("-------");
+    const newerNumberElement = screen.getByText(
+      "-".repeat(NUMBER_SERVER_DIGITS)
+    );
     expect(newerNumberElement).toBeInTheDocument();
   });
   it("displays newer even if older is null", () => {
@@ -78,7 +81,9 @@ describe("TrendingNumber component test suite", () => {
     const older = 1234;
     const newer = null;
     render(<TrendingNumber older={older} newer={newer} />);
-    const newerNumberElement = screen.getByText("-------");
+    const newerNumberElement = screen.getByText(
+      "-".repeat(NUMBER_SERVER_DIGITS)
+    );
     expect(newerNumberElement).toHaveClass("text-white");
   });
 });
