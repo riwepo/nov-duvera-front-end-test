@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useReducer } from "react";
 
 import TrendingNumber from "./components/TrendingNumber";
 
@@ -10,19 +10,21 @@ import config from "../config.json";
 
 const webSocketUrl = config.SERVER_URL;
 
+function currNumbersReducer(
+  state: (number | null)[],
+  action: { newNumber: number }
+): (number | null)[] {
+  const newState = [action.newNumber, state[0]];
+  return newState;
+}
+
 export default function Home() {
   // store the older number at index 1
   // store the newer number at index 0
-  const [currNumbers, setCurrNumbers] = useState<(number | null)[]>([
-    null,
-    null,
-  ]);
+  const [currNumbers, dispatch] = useReducer(currNumbersReducer, [null, null]);
+
   const newNumberHandler = (newNumber: number) => {
-    setCurrNumbers((state) => {
-      // create a new array with the numbers shuffled
-      const newState = [newNumber, state[0]];
-      return newState;
-    });
+    dispatch({ newNumber: newNumber });
   };
 
   // list for a new random number on a web socket
