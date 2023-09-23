@@ -1,3 +1,4 @@
+import { NUMBER_SERVER_DIGITS } from "../lib/constants";
 import { Trend, getTrend } from "../lib/getTrend";
 
 interface TrendingNumberProps {
@@ -22,9 +23,10 @@ const TrendingNumber: React.FC<TrendingNumberProps> = function (props) {
   };
   const trend = getTrend(props.older, props.newer);
   const textColorClass = trendToTextColor[trend];
+  const dashes = "-".repeat(NUMBER_SERVER_DIGITS);
   return (
     <p className={`${textColorClass} ${props.className}`}>
-      {props.newer !== null ? props.newer : "-------"}
+      {props.newer !== null ? props.newer : dashes}
     </p>
   );
 };
