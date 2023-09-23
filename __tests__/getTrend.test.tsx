@@ -1,4 +1,3 @@
-import { render, screen } from "@testing-library/react";
 import { Trend, getTrend } from "../app/lib/getTrend";
 
 describe("getTrend component test suite", () => {
