@@ -9,7 +9,10 @@ import useWebSocketNumberListener from "./hooks/useWebSocketNumberListener";
 export default function Home() {
   // store the older number at index 1
   // store the newer number at index 0
-  const [currNumbers, setCurrNumbers] = useState<number[]>([0, 0]);
+  const [currNumbers, setCurrNumbers] = useState<(number | null)[]>([
+    null,
+    null,
+  ]);
   const newNumberHandler = (newNumber: number) => {
     setCurrNumbers((state) => {
       // create a new array with the numbers shuffled
