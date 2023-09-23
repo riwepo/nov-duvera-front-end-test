@@ -1,4 +1,4 @@
-import getTailwindColorClass from "../lib/getTailwindColorClass";
+import { Trend, getTrend } from "../lib/getTrend";
 
 interface TrendingNumberProps {
   older: number | null;
@@ -14,9 +14,16 @@ interface TrendingNumberProps {
 // display dashes if newer is null
 
 const TrendingNumber: React.FC<TrendingNumberProps> = function (props) {
-  const colorClass = getTailwindColorClass(props.older, props.newer);
+  const trendToTextColor = {
+    [Trend.Unknown]: "text-white",
+    [Trend.Increasing]: "text-green-600",
+    [Trend.Decreasing]: "text-red-600",
+    [Trend.Steady]: "text-white",
+  };
+  const trend = getTrend(props.older, props.newer);
+  const textColorClass = trendToTextColor[trend];
   return (
-    <p className={`text-${colorClass} ${props.className}`}>
+    <p className={`${textColorClass} ${props.className}`}>
       {props.newer !== null ? props.newer : "-------"}
     </p>
   );
