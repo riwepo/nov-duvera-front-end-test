@@ -2,13 +2,6 @@ import { useState, useEffect } from "react";
 
 const isRunningInBrowser = typeof window !== "undefined";
 
-// export enum SocketState {
-//   Connecting = 1,
-//   Open,
-//   Closing,
-//   Closed,
-// }
-
 export default function useWebSocketNumberListener(
   url: string,
   onNewNumber: (num: number) => void
