@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import TrendingNumber from "../app/components/TrendingNumber";
+import TrendingNumber from "../app/features/trending-number/TrendingNumber";
 import "@testing-library/jest-dom";
 import { NUMBER_SERVER_DIGITS } from "@/app/lib/constants";
 
