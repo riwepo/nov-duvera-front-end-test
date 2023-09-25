@@ -1,3 +1,4 @@
+// a little wrapper class around a WebSocket
 class Socket {
   socket: WebSocket | null;
   messageCallback: ((event: MessageEvent) => void) | null;
@@ -22,7 +23,7 @@ class Socket {
     }
   }
 
-  onMessage(callback: (event: MessageEvent) => void) {
+  addMessageListener(callback: (event: MessageEvent) => void) {
     if (this.socket) {
       this.socket.addEventListener("message", callback);
       this.messageCallback = callback;
