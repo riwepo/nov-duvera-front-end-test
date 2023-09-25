@@ -1,6 +1,6 @@
 import { Trend, getTrend } from "../app/features/trending-number/getTrend";
 
-describe("getTrend component test suite", () => {
+describe("getTrend test suite", () => {
   it("returns unknown if older is null", () => {
     const older = null;
     const newer = 1234;
