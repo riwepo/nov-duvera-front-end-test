@@ -14,7 +14,7 @@ export default function Home() {
       dispatch({ type: "socket/disconnect" });
     };
   }, []);
-  const trendingNumber = useSelector((store: unknown) => store.trendingNumber);
+  const trendingNumber = useSelector((state) => state.trendingNumber);
 
   return (
     <div className="bg-black h-screen grid grid-rows-[1fr_auto_1fr] grid-cols-[1fr_auto_1fr]">
