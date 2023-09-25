@@ -9,12 +9,14 @@ class Socket {
 
   connect(url: string) {
     if (!this.socket) {
+      console.log("creating new web socket");
       this.socket = new WebSocket(url);
     }
   }
 
   disconnect() {
     if (this.socket) {
+      console.log("destroying web socket");
       if (this.messageCallback) {
         this.socket.removeEventListener("message", this.messageCallback);
       }
