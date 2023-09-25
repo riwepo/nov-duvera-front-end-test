@@ -9,16 +9,19 @@ import Socket from "../lib/socket";
 // we have a bit of a circular dependency here
 // we don't know the type of the store yet as it is inferred after it is created
 // but we need to call dispatch on it
-let store;
+//let fwdStore: { dispatch: ({ type: string, payload: number }) => void };
+let fwdStore: { dispatch: ({}) => void };
 const socketNextNumberHandler = (n: number) => {
-  store.dispatch(nextNumber(n));
+  fwdStore.dispatch({ type: "trendingNumber/nextNumber", payload: n });
 };
 
-store = configureStore({
+const store = configureStore({
   reducer: { trendingNumber: trendingNumberReducer },
   middleware: (gDM) =>
     gDM().concat(socketMiddleware(new Socket(), socketNextNumberHandler)),
 });
+
+fwdStore = store;
 
 export default store;
 
