@@ -5,7 +5,7 @@ import config from "../../config.json";
 // we have a WebSocket
 // this middleware resonds to actions 'connect' and 'disconnect'
 // on receipt of a message, it calls the onMessage callback provided
-// thanks to https://www.taniarascia.com/websockets-in-redux/
+// thanks to https://www.taniarascia.com/websockets-in-redux/ for some ideas
 export function socketMiddleware(
   socket: Socket,
   onMessage: (data: number) => void

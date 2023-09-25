@@ -6,24 +6,28 @@ import trendingNumberReducer, {
 import { socketMiddleware } from "./socketMiddleware";
 import Socket from "../lib/socket";
 
-// we have a bit of a circular dependency here
-// we don't know the type of the store yet as it is inferred after it is created
+// we have a circular dependency here
+// we don't know the type of the store yet as it is inferred after it is configured
 // but we need to call dispatch on it
-//let fwdStore: { dispatch: ({ type: string, payload: number }) => void };
-let fwdStore: { dispatch: ({}) => void };
+// so we put the store in a variable with some basic typing
+let fwdStore: { dispatch: ({}) => void } | null = null;
 const socketNextNumberHandler = (n: number) => {
-  fwdStore.dispatch({ type: "trendingNumber/nextNumber", payload: n });
+  if (fwdStore) fwdStore.dispatch(nextNumber(n));
 };
 
+// configure the redux store, plugging in our custom middleware
 const store = configureStore({
   reducer: { trendingNumber: trendingNumberReducer },
   middleware: (gDM) =>
     gDM().concat(socketMiddleware(new Socket(), socketNextNumberHandler)),
 });
 
+// initiallise the variable used by the middleware callback
 fwdStore = store;
 
 export default store;
+
+// following redux recommendations here
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;

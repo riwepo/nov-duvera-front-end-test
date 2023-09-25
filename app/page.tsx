@@ -1,19 +1,28 @@
 "use client";
 
+import { useEffect } from "react";
+
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
 
 import TrendingNumber from "./features/trending-number/TrendingNumber";
 
-import { useEffect } from "react";
-
 export default function Home() {
+  // get a hold of the strongly typed redux dispatch function
   const dispatch = useAppDispatch();
+
+  // here we useEffect with dependencies of an empty array
+  // which means it will run once when this component is mounted
+  // it will cause the redux middleware to connect to the socket
   useEffect(() => {
     dispatch({ type: "socket/connect" });
+
+    // the return value is a function called to cleanup when the component is unmounted
+    // here we disconnect the socket
     return () => {
       dispatch({ type: "socket/disconnect" });
     };
   }, []);
+
   const trendingNumber = useAppSelector((state) => state.trendingNumber);
 
   return (
