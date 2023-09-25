@@ -3,6 +3,7 @@ import {
   combineReducers,
   createStore,
 } from "@reduxjs/toolkit";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 import trendingNumberReducer from "../features/trending-number/trendingNumberSlice";
 import { socketMiddleware } from "./socketMiddleware";
@@ -12,7 +13,7 @@ const rootReducer = combineReducers({ trendingNumber: trendingNumberReducer });
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(socketMiddleware(new Socket()))
+  composeWithDevTools(applyMiddleware(socketMiddleware(new Socket())))
 );
 
 export default store;
