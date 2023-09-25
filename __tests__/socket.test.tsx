@@ -2,7 +2,7 @@ import Socket from "@/app/lib/socket";
 import { SERVER_URL } from "../config.json";
 import { NUMBER_SERVER_PERIOD_MS } from "../app/lib/constants";
 
-describe("socket test suite", () => {
+describe("Socket class test suite", () => {
   it("will call the message callback after a little while", async () => {
     // note this test depends on the number server running
     const onMessage = jest.fn();
