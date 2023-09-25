@@ -1,5 +1,5 @@
 import { NUMBER_SERVER_DIGITS } from "../../lib/constants";
-import { Trend, getTrend } from "../../lib/getTrend";
+import { Trend, getTrend } from "./getTrend";
 
 interface TrendingNumberProps {
   older: number | null;
