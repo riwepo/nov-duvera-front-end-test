@@ -12,6 +12,7 @@ const initialState: ITrendingNumberState = {
   currNumber: null,
 };
 
+// manages Redux state for trending numbers
 const trendingNumberSlice = createSlice({
   name: "trendingNumber",
   initialState: initialState,
@@ -27,4 +28,4 @@ const trendingNumberSlice = createSlice({
 
 export default trendingNumberSlice.reducer;
 export const nextNumber = trendingNumberSlice.actions.nextNumber;
-export const selectTrandingNumber = (state: RootState) => state.trendingNumber;
+export const selectTrendingNumber = (state: RootState) => state.trendingNumber;
