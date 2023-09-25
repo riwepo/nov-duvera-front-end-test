@@ -2,6 +2,9 @@ import Socket from "../lib/socket";
 import config from "../../config.json";
 import { nextNumber } from "../features/trending-number/trendingNumberSlice";
 
+/***
+ * thanks to https://www.taniarascia.com/websockets-in-redux/
+ */
 export function socketMiddleware(socket: Socket) {
   return function (params) {
     return function (next) {

@@ -3,7 +3,7 @@ interface ITrendingNumberState {
   currNumber: number | null;
 }
 
-interface IAction {
+interface ITrendingNumberAction {
   type: string;
   payload: number;
 }
@@ -13,11 +13,11 @@ const trendingNumberInitialState: ITrendingNumberState = {
 };
 export default function trendingNumberReducer(
   currentState: ITrendingNumberState = trendingNumberInitialState,
-  action: IAction
-) {
+  action: ITrendingNumberAction
+): ITrendingNumberState {
   switch (action.type) {
     case "trendingNumber/next":
-      const newState = {
+      const newState: ITrendingNumberState = {
         ...currentState,
         prevNumber: currentState.currNumber,
         currNumber: action.payload,
@@ -28,6 +28,6 @@ export default function trendingNumberReducer(
   }
 }
 
-export function nextNumber(n: number) {
+export function nextNumber(n: number): ITrendingNumberAction {
   return { type: "trendingNumber/next", payload: n };
 }
