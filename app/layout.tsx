@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Providers } from "./redux/provider";
+import { StoreProvider } from "./redux/StoreProvider";
 
 export const metadata = {
   title: "Quadra Test App",
@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>{children}</Providers>
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   );

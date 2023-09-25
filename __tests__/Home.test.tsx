@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import { Providers } from "../app/redux/provider";
+import { StoreProvider } from "../app/redux/StoreProvider";
 import Home from "../app/page";
 import {
   NUMBER_SERVER_DIGITS,
@@ -11,18 +11,18 @@ import {
 describe("Home page component test suite", () => {
   it("renders heading", () => {
     render(
-      <Providers>
+      <StoreProvider>
         <Home />
-      </Providers>
+      </StoreProvider>
     );
     const headingElement = screen.getByText("QUADRA TEST");
     expect(headingElement).toBeInTheDocument();
   });
   it("initially renders white dashes", () => {
     render(
-      <Providers>
+      <StoreProvider>
         <Home />
-      </Providers>
+      </StoreProvider>
     );
     const dashesElement = screen.getByText("-".repeat(NUMBER_SERVER_DIGITS));
     expect(dashesElement).toBeInTheDocument();
@@ -31,9 +31,9 @@ describe("Home page component test suite", () => {
   it("if we wait a little the dashes are gone", async () => {
     // note this test depends on the number server running
     render(
-      <Providers>
+      <StoreProvider>
         <Home />
-      </Providers>
+      </StoreProvider>
     );
     await new Promise((r) => setTimeout(r, NUMBER_SERVER_PERIOD_MS * 2));
     const dashesElement = screen.queryByText("-".repeat(7));
@@ -42,9 +42,9 @@ describe("Home page component test suite", () => {
   it("the number is initially white then it changes color", async () => {
     // note this test depends on the number server running
     const { container } = render(
-      <Providers>
+      <StoreProvider>
         <Home />
-      </Providers>
+      </StoreProvider>
     );
     const pElement = container.querySelector("p");
     expect(pElement).toBeInTheDocument();
