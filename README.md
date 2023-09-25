@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Solution for Quadra Challenge test
 
-## Getting Started
+This app is a solution to a test called 'Quadra Challenge' found on Upwork.com.
+Below are the requirements that were given for the challenge.
+I believe this app meets all the requirements.
 
-First, run the development server:
+# Quadra Challenge Requirements
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Instructions
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create a project in NextJS 13 that will communicate via websocket and receive a number between 1000000 and 9999999 every 100ms, the number must be stored in the redux state. Create a client side component to display the numbers received, only the number must be client side. The prototype sent is very simple just to exemplify the idea, but feel free to create the style you prefer and show your skills with tailwindcss.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Bonus
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Change the number color under the following conditions:
 
-## Learn More
+- When the new value is greater than the previous one, it changes to green
+- When the new value is lower than the previous one, it changes to red
+- If it is the same, change it to white
 
-To learn more about Next.js, take a look at the following resources:
+## Requirements
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- NextJS 13
+- Tailwindcss
+- Redux Toolkit
+- Typescript
+- Redux middleware to integrate websocket
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Run websocket server
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+> npm i
+>
+> node ./index.js
