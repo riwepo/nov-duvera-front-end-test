@@ -1,20 +1,20 @@
 "use client";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "./redux/hooks";
 
 import TrendingNumber from "./features/trending-number/TrendingNumber";
 
 import { useEffect } from "react";
 
 export default function Home() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch({ type: "socket/connect" });
     return () => {
       dispatch({ type: "socket/disconnect" });
     };
   }, []);
-  const trendingNumber = useSelector((state) => state.trendingNumber);
+  const trendingNumber = useAppSelector((state) => state.trendingNumber);
 
   return (
     <div className="bg-black h-screen grid grid-rows-[1fr_auto_1fr] grid-cols-[1fr_auto_1fr]">
