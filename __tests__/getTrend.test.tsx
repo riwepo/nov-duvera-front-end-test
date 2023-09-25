@@ -1,4 +1,4 @@
-import { Trend, getTrend } from "../app/lib/getTrend";
+import { Trend, getTrend } from "../app/features/trending-number/getTrend";
 
 describe("getTrend component test suite", () => {
   it("returns unknown if older is null", () => {
